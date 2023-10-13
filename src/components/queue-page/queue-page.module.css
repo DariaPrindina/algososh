@@ -1,0 +1,30 @@
+.elements {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.input__string {
+  width: 377px;
+}
+
+.span {
+  justify-self: start;
+  width: 350px;
+  margin: 4px 0 0 16px;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: start;
+}
+
+.circles {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 120px 0 0 0;
+}

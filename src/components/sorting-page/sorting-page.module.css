@@ -1,31 +1,30 @@
 .sorting_page {
- display: flex;
- justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .inputs {
- display: flex;
- align-items: center;
- gap: 40px;
- margin: 0 52px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin: 0 52px 0 0;
 }
 
 .buttons {
- display: flex;
- align-items: center;
- gap: 12px;
- margin: 0 80px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 80px 0 0;
 }
 
 .columns {
- display: flex;
- justify-content: center;
- gap: 10px;
- margin: 48px 0 0 0;
- min-height: 342px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 48px 0 0 0;
+  min-height: 342px;
 }
 
 .column {
- align-self: flex-end;
+  align-self: flex-end;
 }
-
