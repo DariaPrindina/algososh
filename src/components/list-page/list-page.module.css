@@ -1,0 +1,69 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 952px;
+  margin: 0 auto;
+}
+
+.elements {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+}
+
+.input__string {
+  max-width: 204px;
+}
+
+.span {
+  justify-self: start;
+  margin: 4px 0 0 16px;
+  font-size: 14px;
+  line-height: 22px;
+  text-align: start;
+}
+
+.circles_list {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin: 56px 0 0 0;
+  list-style-type: none;
+  height: 250px;
+}
+
+.circle {
+  display: flex;
+  flex-direction: column;
+}
+
+.mini_circles {
+  max-width: 80px;
+  height: 56px;
+  padding: 0 12px 8px 12px;
+}
+
+.mini_circles_tail {
+  max-width: 80px;
+  height: 56px;
+  margin: 38px 12px 0px 12px;
+}
+
+.button_form {
+  width: 175px;;
+}
+
+.button {
+  width: 362px;
+}
+
+.index_form {
+  display: flex;
+  gap: 12px;
+}
