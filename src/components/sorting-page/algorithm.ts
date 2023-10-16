@@ -1,4 +1,4 @@
-import { DELAY_IN_MS, SHORT_DELAY_IN_MS } from "../../constants/delays";
+import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
 import { ISortingArray } from "../../types/sorting-page-types";
 import { delay } from "../utils/utils";
@@ -46,6 +46,7 @@ export const selectionSortMin = async(arr: ISortingArray[], setArray: any, setLo
     }
     if (maxInd !== i) {
       swap(arr, i, maxInd);
+      arr[maxInd].state = ElementStates.Default
     }
     arr[i].state = ElementStates.Modified
     setArray([...arr])
@@ -73,6 +74,7 @@ export const selectionSortMax = async(arr: ISortingArray[], setArray: any, setLo
     }
     if (minInd !== i) {
       swap(arr, i, minInd);
+      arr[minInd].state = ElementStates.Default
     }
     arr[i].state = ElementStates.Modified
     setArray([...arr])
