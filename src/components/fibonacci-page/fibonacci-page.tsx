@@ -4,7 +4,6 @@ import styles from './fibonacci.module.css'
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { calculateFibonacci } from "./algorithm";
-import { nanoid } from "nanoid";
 import { Circle } from "../ui/circle/circle";
 
 export const FibonacciPage: React.FC = () => {
@@ -60,7 +59,7 @@ export const FibonacciPage: React.FC = () => {
          {array.map((item, index) => {
             return (
               <Circle
-                key={nanoid()}
+                key={index}
                 index={index}
                 letter={item !== undefined ? item.toString() : ''}
               ></Circle>

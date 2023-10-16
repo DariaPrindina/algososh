@@ -5,11 +5,9 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import styles from './list-page.module.css'
 import { LinkedList } from "./algorithm";
-import { nanoid } from "nanoid";
 import { ElementStates } from "../../types/element-states";
 import { delay } from "../utils/utils";
 import { DELAY_IN_MS } from "../../constants/delays";
-
 
 export interface IList {
   item: string,
@@ -26,7 +24,6 @@ const arrayDefaultObj = arrayDefault.map((item) => ({
 
 const list = new LinkedList<IList>(arrayDefaultObj);
 
-
 export const ListPage: React.FC = () => {
   const [loader, setLoader] = useState({
     addInHead: false,
@@ -38,8 +35,8 @@ export const ListPage: React.FC = () => {
     loader: false
   });
 
-  const [values, setValues] = useState<string>("");
-  const [index, setIndex] = useState<string>("");
+  const [values, setValues] = useState("");
+  const [index, setIndex] = useState("");
   const [array, setArray] = useState<IList[]>(list.toArray());
   console.log("🚀 ~ file: list-page.tsx:33 ~ array:", array)
 
@@ -272,7 +269,7 @@ export const ListPage: React.FC = () => {
       <ul className={styles.circles_list}>
         {array.map((item: any, index: number) => {
           return (
-            <li className={styles.circle}>
+            <li className={styles.circle} key={index}>
               <div className={styles.mini_circles}>
               {item.headCircle && (
                 <Circle
@@ -284,7 +281,7 @@ export const ListPage: React.FC = () => {
               )}
               </div>
               <Circle
-                key={nanoid()}
+                key={index}
                 index={index}
                 letter={item.item}
                 state={item.state}

@@ -8,7 +8,6 @@ import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { delay } from "../utils/utils";
 import { Queue } from "./algorithm";
 import { Circle } from "../ui/circle/circle";
-import { nanoid } from "nanoid";
 
 const queueClass = new Queue(7)
 
@@ -25,7 +24,7 @@ export const QueuePage: React.FC = () => {
     loader: false
   });
   const [values, setValues] = useState<string>("");
-  const [queue, setQueue] = useState<any>([...queueClass.returnQueue()]);
+  const [queue, setQueue] = useState<string[] | undefined[] | any>([...queueClass.returnQueue()]);
   const [error, setError] = useState<any>()
 
   const head = queueClass.returnHead()
@@ -55,7 +54,6 @@ export const QueuePage: React.FC = () => {
         setLoader({...loader, loaderEnqueue: false, loader: false})
         setError('')
     }
-    
   }
 
   const dequeue = async() => {
@@ -122,7 +120,7 @@ export const QueuePage: React.FC = () => {
         {queue.map((item: IQueue, index: number) => {
           return (
             <Circle
-              key={nanoid()}
+              key={index}
               index={index}
               letter={item?.item}
               state={item?.state}

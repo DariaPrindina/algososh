@@ -5,7 +5,6 @@ import { delay } from "../utils/utils";
 import { Input } from "../ui/input/input";
 import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
-import { nanoid } from "nanoid";
 import { Stack  } from "./algorithm";
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
@@ -21,7 +20,7 @@ export const StackPage: React.FC = () => {
     loader: false
   });
   const [values, setValues] = useState<string>("");
-  const [array, setArray] = useState<any>([]);
+  const [array, setArray] = useState<IStack[]>([]);
 
   const handleChange = (evt: ChangeEvent<HTMLInputElement>): void => {
     setValues(evt.target.value);
@@ -105,7 +104,7 @@ export const StackPage: React.FC = () => {
         {array.map((item: IStack, index: number) => {
           return (
             <Circle
-              key={nanoid()}
+              key={index}
               index={index}
               letter={item.item}
               state={item.state}
