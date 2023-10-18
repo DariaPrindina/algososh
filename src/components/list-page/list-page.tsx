@@ -5,17 +5,9 @@ import { Button } from "../ui/button/button";
 import { Circle } from "../ui/circle/circle";
 import styles from './list-page.module.css'
 import { LinkedList } from "./algorithm";
-<<<<<<< HEAD
-import { nanoid } from "nanoid";
-import { ElementStates } from "../../types/element-states";
-import { delay } from "../utils/utils";
-import { DELAY_IN_MS, SHORT_DELAY_IN_MS } from "../../constants/delays";
-
-=======
 import { ElementStates } from "../../types/element-states";
 import { delay } from "../utils/utils";
 import { DELAY_IN_MS } from "../../constants/delays";
->>>>>>> month-12/step-1
 
 export interface IList {
   item: string,
@@ -31,10 +23,6 @@ const arrayDefaultObj = arrayDefault.map((item) => ({
 }))
 
 const list = new LinkedList<IList>(arrayDefaultObj);
-<<<<<<< HEAD
-
-=======
->>>>>>> month-12/step-1
 
 export const ListPage: React.FC = () => {
   const [loader, setLoader] = useState({
@@ -47,13 +35,8 @@ export const ListPage: React.FC = () => {
     loader: false
   });
 
-<<<<<<< HEAD
-  const [values, setValues] = useState<string>("");
-  const [index, setIndex] = useState<string>("");
-=======
   const [values, setValues] = useState("");
   const [index, setIndex] = useState("");
->>>>>>> month-12/step-1
   const [array, setArray] = useState<IList[]>(list.toArray());
   console.log("🚀 ~ file: list-page.tsx:33 ~ array:", array)
 
@@ -61,12 +44,8 @@ export const ListPage: React.FC = () => {
     circleAddItemHead: false,
     circleAddItemTail: false,
     circleDeleteItemHead: false,
-<<<<<<< HEAD
-    circleDeleteItemTail: false
-=======
     circleDeleteItemTail: false,
     circleAddByIndex: false
->>>>>>> month-12/step-1
   })
 
   const handleChangeValue = (evt: ChangeEvent<HTMLInputElement>): void => {
@@ -148,10 +127,7 @@ export const ListPage: React.FC = () => {
   const addByIndex = async() => {
     const item = {item: values, state: ElementStates.Modified}
     setLoader({...loader, deleteByIndex: true, loader: true})
-<<<<<<< HEAD
-=======
     setCircleItem({...circleItem, circleAddByIndex: true})
->>>>>>> month-12/step-1
     for (let i = 0; i < Number(index); i++) {
       let itemByIndexall = list.findItemByIndex(i)
       if(i <= Number(index)) {
@@ -172,10 +148,7 @@ export const ListPage: React.FC = () => {
     setArray(list.toArray())
     await delay(DELAY_IN_MS)
     setArray(list.toArray().map((item) => {return {item: item.item, state: ElementStates.Default}}))
-<<<<<<< HEAD
-=======
     setCircleItem({...circleItem, circleAddByIndex: false})
->>>>>>> month-12/step-1
     setLoader({...loader, deleteByIndex: false, loader: false})
   }
 
@@ -296,11 +269,7 @@ export const ListPage: React.FC = () => {
       <ul className={styles.circles_list}>
         {array.map((item: any, index: number) => {
           return (
-<<<<<<< HEAD
-            <li className={styles.circle}>
-=======
             <li className={styles.circle} key={index}>
->>>>>>> month-12/step-1
               <div className={styles.mini_circles}>
               {item.headCircle && (
                 <Circle
@@ -312,19 +281,11 @@ export const ListPage: React.FC = () => {
               )}
               </div>
               <Circle
-<<<<<<< HEAD
-                key={nanoid()}
-                index={index}
-                letter={item.item}
-                state={item.state}
-                head={!circleItem.circleAddItemHead && !circleItem.circleDeleteItemHead && index === 0 ? 'top' : ''}
-=======
                 key={index}
                 index={index}
                 letter={item.item}
                 state={item.state}
                 head={!circleItem.circleAddItemHead && !circleItem.circleDeleteItemHead && !circleItem.circleAddByIndex && index === 0 ? 'top' : ''}
->>>>>>> month-12/step-1
                 tail={!circleItem.circleAddItemTail && !circleItem.circleDeleteItemTail && index === array.length - 1 ? 'tail' : ''}
               >
               </Circle>
