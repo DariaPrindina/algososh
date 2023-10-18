@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+import { Dispatch, SetStateAction } from "react";
+>>>>>>> month-12/step-1
 import { SHORT_DELAY_IN_MS } from "../../constants/delays";
 import { ElementStates } from "../../types/element-states";
 import { ISortingArray } from "../../types/sorting-page-types";
@@ -26,7 +30,15 @@ const swap = (arr: ISortingArray[], i: number, j: number): void => {
   [arr[i], arr[j]] = [arr[j], arr[i]]
 };
 
+<<<<<<< HEAD
 export const selectionSortMin = async(arr: ISortingArray[], setArray: any, setLoader: any) => {
+=======
+export const selectionSortMin = async(
+    arr: ISortingArray[], 
+    setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
+    setLoader: Dispatch<SetStateAction<boolean>>
+  ) => {
+>>>>>>> month-12/step-1
   setLoader(true)
   const { length } = arr; 
   if(!length) return
@@ -54,7 +66,15 @@ export const selectionSortMin = async(arr: ISortingArray[], setArray: any, setLo
   setLoader(false)
 };
 
+<<<<<<< HEAD
 export const selectionSortMax = async(arr: ISortingArray[], setArray: any, setLoader: any) => {
+=======
+export const selectionSortMax = async(
+    arr: ISortingArray[], 
+    setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
+    setLoader: Dispatch<SetStateAction<boolean>>
+  ) => {
+>>>>>>> month-12/step-1
   setLoader(true)
   const { length } = arr; 
   if(!length) return
@@ -82,7 +102,15 @@ export const selectionSortMax = async(arr: ISortingArray[], setArray: any, setLo
   setLoader(false)
 }
 
+<<<<<<< HEAD
 export const bubbleSortMin = async(arr: ISortingArray[], setArray: any, setLoader: any) => {
+=======
+export const bubbleSortMin = async(
+    arr: ISortingArray[], 
+    setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
+    setLoader: Dispatch<SetStateAction<boolean>>
+  ) => {
+>>>>>>> month-12/step-1
   setLoader(true)
   const { length } = arr; 
   if(!length) return
@@ -105,7 +133,15 @@ export const bubbleSortMin = async(arr: ISortingArray[], setArray: any, setLoade
   setLoader(false)
 } 
 
+<<<<<<< HEAD
 export const bubbleSortMax = async(arr: ISortingArray[], setArray: any, setLoader: any) => {
+=======
+export const bubbleSortMax = async(
+    arr: ISortingArray[], 
+    setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
+    setLoader: Dispatch<SetStateAction<boolean>>
+  ) => {
+>>>>>>> month-12/step-1
   setLoader(true)
   const { length } = arr; 
   if(!length) return

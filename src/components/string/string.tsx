@@ -6,7 +6,10 @@ import styles from "./string.module.css";
 import { Circle } from "../ui/circle/circle";
 import { reverseString } from "./algorithm";
 import { modifiedStringToArray } from "../utils/utils";
+<<<<<<< HEAD
 import { nanoid } from "nanoid";
+=======
+>>>>>>> month-12/step-1
 import { ILetter } from "../../types/string-types";
 
 export const StringComponent: React.FC = () => {
@@ -41,10 +44,17 @@ export const StringComponent: React.FC = () => {
         <Button isLoader={loader} type="submit" text="Развернуть"></Button>
       </form>
       <div className={styles.circles}>
+<<<<<<< HEAD
         {array.map((item) => {
           return (
             <Circle
               key={nanoid()}
+=======
+        {array.map((item, index) => {
+          return (
+            <Circle
+              key={index}
+>>>>>>> month-12/step-1
               letter={item.value}
               state={item.state}
             ></Circle>
