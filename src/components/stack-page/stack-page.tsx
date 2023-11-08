@@ -71,6 +71,7 @@ export const StackPage: React.FC = () => {
             onChange={handleChange}
             maxLength={4}
             extraClass={styles.input__string}
+            data-test-id="stack-input"
           ></Input>
           <span className={styles.span}>Максимум - 4 символа</span>
         </div>
@@ -80,6 +81,7 @@ export const StackPage: React.FC = () => {
           type="button" 
           text="Добавить"
           onClick={() => {pushItem(values)}}
+          data-test-id="stack-add-btn"
         >
         </Button>
         <Button 
@@ -88,6 +90,7 @@ export const StackPage: React.FC = () => {
           text="Удалить"
           disabled={array.length > 0 && loader.loader === false ? false : true}
           onClick={() => {popItem()}}
+          data-test-id="stack-delete-btn"
         >
         </Button>
         <Button 
@@ -97,10 +100,11 @@ export const StackPage: React.FC = () => {
           type="button" 
           text="Очистить"
           onClick={() => {removeAllItems()}}
+          data-test-id="stack-clear-btn"
         >
         </Button>
       </form>
-      <div className={styles.circles}>
+      <div className={styles.circles} data-test-id="circles">
         {array.map((item: IStack, index: number) => {
           return (
             <Circle

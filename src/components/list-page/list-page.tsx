@@ -154,31 +154,29 @@ export const ListPage: React.FC = () => {
 
   const deleteByIndex = async() => {
     setLoader({...loader, deleteByIndex: true, loader: true})
+    setIndex('')
+    for (let i = 0; i <= Number(index); i++) {
+      const itemByIndex = list.findItemByIndex(i);
+      if (itemByIndex) {
+        if (i === Number(index)) {
+          itemByIndex.tailCircle = itemByIndex.item;
+          itemByIndex.item = "";
+        } else {
+          itemByIndex.state = ElementStates.Changing;
+        }
+      }
+      setArray(list.toArray())
+      await delay(DELAY_IN_MS)
+    }
+
     for (let i = 0; i < Number(index); i++) {
-      let itemByIndexall = list.findItemByIndex(i)
-      let itemByIndex = list.findItemByIndex(Number(index))
-      if(i <= Number(index)) {
-        if (itemByIndexall){
-          itemByIndexall.state = ElementStates.Changing
-        } 
-      }
-      setArray(list.toArray())
-      await delay(DELAY_IN_MS)
-        if (itemByIndex){
-          itemByIndex.headCircle = itemByIndex.item
-      }
-      setArray(list.toArray())
-      await delay(DELAY_IN_MS)
-        if (itemByIndex){
-          itemByIndex.item = ''
-          itemByIndex.headCircle = undefined
+      const itemIndex = list.findItemByIndex(i);
+      if (itemIndex) {
+        itemIndex.state = ElementStates.Default;
       }
     }
-    await delay(DELAY_IN_MS)
     list.deleteByIndex(Number(index))
     setArray(list.toArray())
-    await delay(DELAY_IN_MS)
-    setArray(list.toArray().map((item) => {return {item: item.item, state: ElementStates.Default}}))
     setLoader({...loader, deleteByIndex: false, loader: false})
   }
 
@@ -195,6 +193,7 @@ export const ListPage: React.FC = () => {
               maxLength={4}
               extraClass={styles.input__string}
               placeholder='Введите значение'
+              data-test-id="list-input-value"
             ></Input>
             <span className={styles.span}>Максимум - 4 символа</span>
           </div>
@@ -205,6 +204,7 @@ export const ListPage: React.FC = () => {
             text="Добавить в head"
             onClick={addInHead}
             disabled={loader.addInHead || loader.loader || values.length === 0 ? true : false}
+            data-test-id="add-in-head-btn"
           >
           </Button>
           <Button 
@@ -214,6 +214,7 @@ export const ListPage: React.FC = () => {
             text="Добавить в tail"
             onClick={addInTail}
             disabled={loader.addInTail || loader.loader ||  values.length === 0 ? true : false}
+            data-test-id="add-in-tail-btn"
           >
           </Button>
           <Button
@@ -223,6 +224,7 @@ export const ListPage: React.FC = () => {
             text="Удалить из head"
             onClick={deleteFromHead}
             disabled={loader.deleteFromHead || loader.loader || list.returnHead() === null ? true : false}
+            data-test-id="delete-from-head-btn"
           >
           </Button>
           <Button 
@@ -232,6 +234,7 @@ export const ListPage: React.FC = () => {
             text="Удалить из tail"
             onClick={deleteFromTail}
             disabled={loader.deleteFromTail || loader.loader || list.returnTail() === null ? true : false}
+            data-test-id="delete-from-tail-btn"
           >
           </Button>
         </form>
@@ -244,6 +247,7 @@ export const ListPage: React.FC = () => {
               maxLength={4}
               extraClass={styles.input__string}
               placeholder='Введите индекс'
+              data-test-id="list-input-index"
             ></Input>
           </div>
           <Button
@@ -253,6 +257,7 @@ export const ListPage: React.FC = () => {
             text="Добавить по индексу"
             onClick={addByIndex}
             disabled={!index || values.length === 0 ? true : false}
+            data-test-id="add-by-index-btn"
           >
           </Button>
           <Button
@@ -262,6 +267,7 @@ export const ListPage: React.FC = () => {
             text="Удалить по индексу"
             onClick={deleteByIndex}
             disabled={!index || Number(index) > list.getSize() ? true : false}
+            data-test-id="delete-by-index-btn"
           >
           </Button>
         </form>

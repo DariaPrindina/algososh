@@ -87,6 +87,7 @@ export const QueuePage: React.FC = () => {
             onChange={handleChange}
             maxLength={4}
             extraClass={styles.input__string}
+            data-test-id="queue-input"
           ></Input>
           <span className={styles.span}>{!error ? `Максимум - 4 символа` : `${error}`}</span>
         </div>
@@ -96,6 +97,7 @@ export const QueuePage: React.FC = () => {
           type="button" 
           text="Добавить"
           onClick={() => {enqueue(values)}}
+          data-test-id="queue-add-btn"
         >
         </Button>
         <Button 
@@ -104,6 +106,7 @@ export const QueuePage: React.FC = () => {
           text="Удалить"
           disabled={lengthOfQueue.length > 0 && loader.loader === false ? false : true}
           onClick={() => {dequeue()}}
+          data-test-id="queue-delete-btn"
         >
         </Button>
         <Button 
@@ -113,6 +116,7 @@ export const QueuePage: React.FC = () => {
           type="button" 
           text="Очистить"
           onClick={() => {removeAllItems()}}
+          data-test-id="queue-clear-btn"
         >
         </Button>
       </form>

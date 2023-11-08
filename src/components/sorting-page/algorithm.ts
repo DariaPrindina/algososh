@@ -27,10 +27,11 @@ const swap = (arr: ISortingArray[], i: number, j: number): void => {
   [arr[i], arr[j]] = [arr[j], arr[i]]
 };
 
-export const selectionSortMin = async(
+export const selectionSort = async(
     arr: ISortingArray[], 
     setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
-    setLoader: Dispatch<SetStateAction<boolean>>
+    setLoader: Dispatch<SetStateAction<boolean>>,
+    min: boolean
   ) => {
   setLoader(true)
   const { length } = arr; 
@@ -43,7 +44,10 @@ export const selectionSortMin = async(
       arr[j].state = ElementStates.Changing
       setArray([...arr])
       await delay(SHORT_DELAY_IN_MS)
-      if (arr[j].number > arr[maxInd].number) {
+      if (min 
+          ? arr[j].number > arr[maxInd].number 
+          : arr[j].number < arr[maxInd].number
+        ) {
         maxInd = j;
       }
       arr[j].state = ElementStates.Default
@@ -59,42 +63,11 @@ export const selectionSortMin = async(
   setLoader(false)
 };
 
-export const selectionSortMax = async(
+export const bubbleSort = async(
     arr: ISortingArray[], 
     setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
-    setLoader: Dispatch<SetStateAction<boolean>>
-  ) => {
-  setLoader(true)
-  const { length } = arr; 
-  if(!length) return
-  for (let i = 0; i < length; i++) {
-    let minInd = i;
-    arr[i].state = ElementStates.Changing
-    setArray([...arr])
-    for (let j = i + 1; j < length; j++) {
-      arr[j].state = ElementStates.Changing
-      setArray([...arr])
-      await delay(SHORT_DELAY_IN_MS)
-      if (arr[j].number < arr[minInd].number) {
-        minInd = j;
-      }
-      arr[j].state = ElementStates.Default
-      setArray([...arr])
-    }
-    if (minInd !== i) {
-      swap(arr, i, minInd);
-      arr[minInd].state = ElementStates.Default
-    }
-    arr[i].state = ElementStates.Modified
-    setArray([...arr])
-  }
-  setLoader(false)
-}
-
-export const bubbleSortMin = async(
-    arr: ISortingArray[], 
-    setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
-    setLoader: Dispatch<SetStateAction<boolean>>
+    setLoader: Dispatch<SetStateAction<boolean>>,
+    min: boolean
   ) => {
   setLoader(true)
   const { length } = arr; 
@@ -106,34 +79,10 @@ export const bubbleSortMin = async(
       arr[j + 1].state = ElementStates.Changing
       setArray([...arr])
       await delay(SHORT_DELAY_IN_MS)
-      if (arr[j].number < arr[j + 1].number) {
-        swap(arr, j, j + 1)
-      }
-      arr[j].state = ElementStates.Default
-      arr[j + 1].state = ElementStates.Default
-    }
-    arr[length - i - 1].state = ElementStates.Modified
-    setArray([...arr])
-  }
-  setLoader(false)
-} 
-
-export const bubbleSortMax = async(
-    arr: ISortingArray[], 
-    setArray: Dispatch<SetStateAction<ISortingArray[]>>, 
-    setLoader: Dispatch<SetStateAction<boolean>>
-  ) => {
-  setLoader(true)
-  const { length } = arr; 
-  if(!length) return
-  setArray([...arr])
-  for (let i = 0; i < length; i++) {
-    for (let j = 0; j < length - i - 1; j++) {
-      arr[j].state = ElementStates.Changing
-      arr[j + 1].state = ElementStates.Changing
-      setArray([...arr])
-      await delay(SHORT_DELAY_IN_MS)
-      if (arr[j].number > arr[j + 1].number) {
+      if (min 
+          ? arr[j].number < arr[j + 1].number 
+          : arr[j].number > arr[j + 1].number
+         ) {
         swap(arr, j, j + 1)
       }
       arr[j].state = ElementStates.Default

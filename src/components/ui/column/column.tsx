@@ -6,6 +6,7 @@ interface ColumnProps {
   index: number;
   state?: ElementStates;
   extraClass?: string;
+  children?: React.ReactNode
 }
 
 export const Column: React.FC<ColumnProps> = ({

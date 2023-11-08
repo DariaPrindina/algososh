@@ -5,12 +5,13 @@ import { Button } from "../ui/button/button";
 import { Direction } from "../../types/direction";
 import styles from './sorting-page.module.css'
 import { Column } from "../ui/column/column";
-import { bubbleSortMax, bubbleSortMin, crateRandomNumber, createRandomArray, selectionSortMax, selectionSortMin } from "./algorithm";
+import { bubbleSort, crateRandomNumber, createRandomArray, selectionSort } from "./algorithm";
 import { ISortingArray } from "../../types/sorting-page-types";
 
 export const SortingPage: React.FC = () => {
   const [loader, setLoader] = useState<boolean>(false)
   const [array, setArray] = useState<ISortingArray[]>([])
+  console.log("🚀 ~ file: sorting-page.tsx:14 ~ array:", array)
   const [radioValue, setRadioValue] = useState('selection')
 
   const randomArr = () => {
@@ -25,19 +26,19 @@ export const SortingPage: React.FC = () => {
   }
 
   const handleSelectionSortMin = () => {
-    array.length > 0 ? selectionSortMin(array, setArray, setLoader) : randomArr()
+    array.length > 0 ? selectionSort(array, setArray, setLoader, true) : randomArr()
   }
 
   const handleSelectionSortMax = () => {
-    array.length > 0 ? selectionSortMax(array, setArray, setLoader) : randomArr()
+    array.length > 0 ? selectionSort(array, setArray, setLoader, false) : randomArr()
   }
 
   const handleBubbleSortMin = () => {
-    array.length > 0 ? bubbleSortMin(array, setArray, setLoader) : randomArr()
+    array.length > 0 ? bubbleSort(array, setArray, setLoader, true) : randomArr()
   }
 
   const handleBubbleSortMax = () => {
-    array.length > 0 ? bubbleSortMax(array, setArray, setLoader) : randomArr()
+    array.length > 0 ? bubbleSort(array, setArray, setLoader, false) : randomArr()
   }
 
   return (

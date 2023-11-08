@@ -38,7 +38,8 @@ export const FibonacciPage: React.FC = () => {
             value={value}
             onChange={handleChange}
             maxLength={11} 
-            extraClass={styles.input__string}>
+            extraClass={styles.input__string}
+            data-test-id="fibonacci-input">
           </Input>
           <span className={styles.span}>Максимальное число - 19</span>   
         </div>
@@ -46,13 +47,15 @@ export const FibonacciPage: React.FC = () => {
           isLoader={loader} 
           disabled={number >= 1 && number <= 19 ? false : true}
           type='submit' 
-          text='Рассчитать'>
+          text='Рассчитать'
+          data-test-id="fibonacci-submit-btn">
         </Button>
         <Button 
-          disabled={value !== '' ? false : true}
+          disabled={array.length < 1 ? true : false}
           type='button' 
           text='Очистить'
-          onClick={handleClear}>
+          onClick={handleClear}
+          data-test-id="fibonacci-clear-btn">
         </Button>
        </form>
        <div className={styles.circles}>

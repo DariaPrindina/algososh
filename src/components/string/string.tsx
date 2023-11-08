@@ -23,6 +23,7 @@ export const StringComponent: React.FC = () => {
     await reverseString(values, setLoader, setArray);
     setValues("");
   };
+  console.log("🚀 ~ file: string.tsx:14 ~ values:", values)
 
   return (
     <SolutionLayout title="Строка">
@@ -34,10 +35,11 @@ export const StringComponent: React.FC = () => {
             onChange={handleChange}
             maxLength={11}
             extraClass={styles.input__string}
+            data-test-id="string-input"
           ></Input>
           <span className={styles.span}>Максимум 11 символов</span>
         </div>
-        <Button isLoader={loader} type="submit" text="Развернуть"></Button>
+        <Button disabled={values === '' ? true : false} isLoader={loader} type="submit" text="Развернуть" data-test-id="string-submit-btn"></Button>
       </form>
       <div className={styles.circles}>
         {array.map((item, index) => {
