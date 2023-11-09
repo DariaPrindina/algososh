@@ -12,7 +12,7 @@ describe('queue tests', () => {
     cy.get('@addButton').should('be.disabled')
   });
 
-  it('correctness of adding/removing/clearing elements in the queue', () => {
+  it('correctness of adding elements in the queue', () => {
     cy.get('@input').type('1')
     cy.get('@addButton').should('have.text', 'Добавить').should('not.be.disabled').click()
     cy.get('[data-test-id="circle-head"]').as("head")
@@ -43,8 +43,39 @@ describe('queue tests', () => {
     cy.get('@circle').eq(1).should('have.text', '2')
     cy.get('@head').eq(1).should('have.text', 'head')
     cy.get('@tail').eq(1).should('have.text', 'tail')
+  })
 
+  it('correctness of removing elements in the queue', () => {
+    cy.get('@input').type('1')
+    cy.get('@addButton').should('have.text', 'Добавить').should('not.be.disabled').click()
+
+    cy.get('[data-test-id="circle-head"]').as("head")
+    cy.get('[data-test-id="circle-tail"]').as("tail")
+
+    cy.get('@addButton').should('be.disabled')
+    cy.get('@clearButton').should('not.be.disabled')
+    cy.get('@deleteButton').should('not.be.disabled')
+    cy.get('[data-test-id="circle"]').as('circle')
     
+    cy.get('@input').type('2')
+    cy.get('@addButton').should('not.be.disabled').click()
+    cy.wait(500)
+    cy.get('@head').eq(0).should('have.text', 'head')
+    cy.get('@tail').eq(1).should('have.text', 'tail')
+    
+    cy.get('@deleteButton').should('have.text', 'Удалить').should('not.be.disabled').click()
+    cy.get('@circle').eq(0).should('have.text', '')
+    cy.get('@circle').eq(1).should('have.text', '2')
+    cy.get('@head').eq(1).should('have.text', 'head')
+    cy.get('@tail').eq(1).should('have.text', 'tail')
+  })
+
+  it('correctness of clearing elements in the queue', () => {
+    cy.get('@input').type('1')
+    cy.get('@addButton').should('have.text', 'Добавить').should('not.be.disabled').click()
+    cy.get('[data-test-id="circle"]').as('circle')
+    cy.get('[data-test-id="circle-head"]').as("head")
+    cy.get('[data-test-id="circle-tail"]').as("tail")
     cy.get('@input').type('3')
     cy.get('@addButton').should('not.be.disabled').click()
     cy.get('@input').type('4')
